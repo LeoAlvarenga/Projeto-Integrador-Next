@@ -1,10 +1,15 @@
 import { MovieCard } from '../components/MovieCard';
-import s from './home.module.css';
+import s from './home.module.scss';
 
 const IndexPage = () => (
-  <div className={s.container}>
-    <h1 className={s.title}>Hello</h1>
-    <MovieCard />
+  <div className={s.main}>
+    <h1 className={s.['main__title']}>Movie List</h1>
+    <div className={s.['main__list']}>
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+    </div>
   </div>
 )
 
