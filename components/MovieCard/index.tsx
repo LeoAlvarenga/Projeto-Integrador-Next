@@ -1,19 +1,27 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import s from './style.module.scss';
 
-export const MovieCard = () => {
+interface IMovieCard extends HTMLAttributes<HTMLDivElement> {
+    imageCover: string;
+    title: string;
+    date: string;
+    overview: string;
+    movieId: string;
+}
+
+export const MovieCard = ({ imageCover, date, movieId, overview, title, ...props }: IMovieCard) => {
 
     return (
-        <div className={s.card}>
-            <img className={s['card__img']} src="https://br.web.img3.acsta.net/pictures/19/09/17/19/29/5316438.jpg" alt="titulo do filme"/>
+        <div className={s.card} {...props}>
+            <img className={s['card__img']} src={`https://image.tmdb.org/t/p/w342/${imageCover}`} alt={title}/>
             <div className={s['card__info']}>
-                <h3>Titulo do Filme</h3>
-                <h4>00/00/0000</h4>
+                <h3>{title}</h3>
+                <h4>{date}</h4>
                 <div className={s['card__info__textWrapper']}>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p>{overview}</p>
                 </div>
-                <Link href="/detail">Saiba mais &gt;</Link>
+                <Link href={`/detail/${movieId}`}>Saiba mais &gt;</Link>
             </div>
         </div>
     );
