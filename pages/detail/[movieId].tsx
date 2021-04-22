@@ -23,11 +23,7 @@ interface IDetailPage {
     movie: IMovieResponse;
 }
 
-const Detail = ({ movie }: IDetailPage) => {
-
-    console.log(movie);
-
-    return (
+const Detail = ({ movie }: IDetailPage) => (
         <>
         <Head>
             <title>{movie.title}</title>
@@ -54,8 +50,7 @@ const Detail = ({ movie }: IDetailPage) => {
                 </div>
             </div>
         </>
-    )
-}
+    );
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 

@@ -21,9 +21,7 @@ export interface IMovie {
   title: string;
 }
 
-const IndexPage = ({ movieList }: IHomeProps) => {
-
-  return (
+const IndexPage = ({ movieList }: IHomeProps) => (
     <>
     <Head>
       <title>Lista de Filmes</title>
@@ -40,7 +38,6 @@ const IndexPage = ({ movieList }: IHomeProps) => {
       </div>
     </>
   );
-}
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const movieList: IMoviesListResponse = (await tmdbApi.get(`/movie/popular?api_key=4bdeca07f5aa7e579560ab19507b93e5`)).data;
