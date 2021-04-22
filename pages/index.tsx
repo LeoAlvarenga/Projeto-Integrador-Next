@@ -40,7 +40,7 @@ const IndexPage = ({ movieList }: IHomeProps) => (
   );
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const movieList: IMoviesListResponse = (await tmdbApi.get(`/movie/popular?api_key=4bdeca07f5aa7e579560ab19507b93e5`)).data;
+  const movieList: IMoviesListResponse = (await tmdbApi.get(`/movie/popular?api_key=${process.env.TMDB_API_KEY}`)).data;
 
   return {
     props: {

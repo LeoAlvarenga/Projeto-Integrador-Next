@@ -54,9 +54,7 @@ const Detail = ({ movie }: IDetailPage) => (
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
-    console.log({ params });
-
-    const movie: IMovieResponse = (await tmdbApi.get(`/movie/${params?.movieId}?api_key=4bdeca07f5aa7e579560ab19507b93e5&language=pt-BR`)).data;
+    const movie: IMovieResponse = (await tmdbApi.get(`/movie/${params?.movieId}?api_key=${process.env.TMDB_API_KEY}&language=pt-BR`)).data;
 
     return {
         props: {
