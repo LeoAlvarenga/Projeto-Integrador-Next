@@ -12,11 +12,6 @@ interface IMovieResponse {
     title: string;
     release_date: string;
     runtime: string;
-    videos: {
-        results: {
-            key: string;
-        }[];
-    };
 }
 
 interface IDetailPage {
@@ -24,33 +19,34 @@ interface IDetailPage {
 }
 
 const Detail = ({ movie }: IDetailPage) => (
-        <>
+    <>
         <Head>
             <title>{movie.title}</title>
+            <meta name="Lista de Filmes" content="Lista de filmes populares"></meta>
         </Head>
-            <div className={s.container}>
-                <img className={s['container__img']} src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="Titulo do filme" />
-                <div className={s['container__content']}>
-                    <h1>{movie.title}</h1>
-                    <p>{movie.overview}</p>
-                    <div className={s.infoWrapper}>
-                        <div className={s['infoWrapper__info']}>
-                            <span>Data de Lançamento</span>
-                            <p>{formatDateBR(movie.release_date)}</p>
-                        </div>
-                        <div className={s['infoWrapper__info']}>
-                            <span>Duração</span>
-                            <p>{minutesToHours(Number(movie.runtime))}</p>
-                        </div>
-                        <div className={s['infoWrapper__info']}>
-                            <span>Receita</span>
-                            <p>{movie.revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'USD' })}</p>
-                        </div>
+        <div className={s.container}>
+            <img className={s['container__img']} src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="Titulo do filme" />
+            <div className={s['container__content']}>
+                <h1>{movie.title}</h1>
+                <p>{movie.overview}</p>
+                <div className={s.infoWrapper}>
+                    <div className={s['infoWrapper__info']}>
+                        <span>Data de Lançamento</span>
+                        <p>{formatDateBR(movie.release_date)}</p>
+                    </div>
+                    <div className={s['infoWrapper__info']}>
+                        <span>Duração</span>
+                        <p>{minutesToHours(Number(movie.runtime))}</p>
+                    </div>
+                    <div className={s['infoWrapper__info']}>
+                        <span>Receita</span>
+                        <p>{movie.revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'USD' })}</p>
                     </div>
                 </div>
             </div>
-        </>
-    );
+        </div>
+    </>
+);
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
