@@ -22,7 +22,7 @@ const Detail = ({ movie }: IDetailPage) => (
     <>
         <Head>
             <title>{movie.title}</title>
-            <meta name="Lista de Filmes" content="Lista de filmes populares"></meta>
+            <meta name="description" content="Lista de filmes populares"></meta>
         </Head>
         <div className={s.container}>
             <img className={s['container__img']} src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="Titulo do filme" />
