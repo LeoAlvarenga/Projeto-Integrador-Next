@@ -25,7 +25,7 @@ const IndexPage = ({ movieList }: IHomeProps) => (
     <>
     <Head>
       <title>Lista de Filmes</title>
-      <meta name="description" content="Lista de filmes populares"></meta>
+      <meta name="description" content="Lista de filmes"></meta>
     </Head>
       <div className={s.main}>
         <h1 className={s['main__title']}>Lista de Filmes</h1>
