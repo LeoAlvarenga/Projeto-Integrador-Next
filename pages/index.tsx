@@ -32,7 +32,13 @@ const IndexPage = ({ movieList }: IHomeProps) => (
         <div className={s['main__list']}>
           {
             movieList.results.map(movie => (
-              <MovieCard key={movie.id} date={formatDateBR(movie.release_date)} imageCover={movie.poster_path} movieId={movie.id.toString()} overview={movie.overview} title={movie.title} />
+              <MovieCard 
+                key={movie.id} 
+                date={formatDateBR(movie.release_date)} 
+                imageCover={movie.poster_path} 
+                movieId={movie.id.toString()} 
+                overview={movie.overview} 
+                title={movie.title} />
             ))
           }
         </div>
@@ -41,7 +47,8 @@ const IndexPage = ({ movieList }: IHomeProps) => (
   );
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const movieList: IMoviesListResponse = (await tmdbApi.get(`/movie/popular?api_key=${process.env.TMDB_API_KEY}`)).data;
+  const movieList: IMoviesListResponse = (await tmdbApi
+    .get(`/movie/popular?api_key=${process.env.TMDB_API_KEY}`)).data;
 
   return {
     props: {
