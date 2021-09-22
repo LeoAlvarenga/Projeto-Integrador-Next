@@ -25,7 +25,8 @@ const IndexPage = ({ movieList }: IHomeProps) => (
     <>
     <Head>
       <title>Lista de Filmes</title>
-      <meta name="description" content="Lista de filmes"></meta>
+      <meta name="description" content="Lista de filmes">
+      </meta>
     </Head>
       <div className={s.main}>
         <h1 className={s['main__title']}>Lista de Filmes</h1>
@@ -48,7 +49,8 @@ const IndexPage = ({ movieList }: IHomeProps) => (
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const movieList: IMoviesListResponse = (await tmdbApi
-    .get(`/movie/popular?api_key=${process.env.TMDB_API_KEY}`)).data;
+    .get(`/movie/popular?api_key=${process.env.TMDB_API_KEY}`))
+    .data;
 
   return {
     props: {
